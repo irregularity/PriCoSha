@@ -1,0 +1,20 @@
+<html>
+<head>
+</head>
+<body>
+<form action="/create_fg" method="POST">
+	<input type="text" name = "fg_name" placeholder="group name" required/> </br>
+	<input type="text" name = "description" placeholder="description" required/> </br>
+	<input type="submit" value = Create />
+	{% if error %}
+		<p class="error"><strong>Error:</strong> {{error}}</p>
+	{% endif %}
+</form>
+
+<br>
+<a href="/login">Logout</a>
+
+</body>
+
+
+</html>

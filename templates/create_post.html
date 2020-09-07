@@ -1,0 +1,32 @@
+<html>
+<head>
+</head>
+<body>
+<form action="/post" method="POST">
+	<input type="text" name = "item_name" placeholder="title" required/> </br>
+	<input type="text" name = "file_path" placeholder="file path" required/> </br>
+	<input type="radio" name = "location" value="New York City" required/> New York City </br>
+	<input type="radio" name = "location" value="Los Angeles" required/> Los Angeles </br>
+	<input type="radio" name = "location" value="Miami" required/> Miami </br>
+	<input type="radio" name = "location" value="Washington D.C." required/> Washington D.C. </br>
+	
+	<input type="checkbox" name="status" value="Yes"> Public<br>
+	<input type="hidden" name=status value="No">
+	
+	<br>
+	<input type="submit" value = Post />
+	{% if error %}
+		<p class="error"><strong>Error:</strong> {{error}}</p>
+	{% endif %}
+</form>
+
+<br>
+<a href="/home">Home</a>
+
+<br><br>
+<a href="/login">Logout</a>
+
+</body>
+
+
+</html>

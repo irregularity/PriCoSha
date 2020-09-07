@@ -1,0 +1,39 @@
+<html>
+<head>
+</head>
+<body>
+
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+
+Select email of {{fname}} {{lname}}:
+<br><br>
+
+<form action="/add_after_select" method="GET">
+<input type="hidden" name="fg_name" value={{fg_name}}>
+
+{% for line in data_select %}
+	<input type="radio" name="friend" value={{line.email}} checked>{{line.email}}</input>
+	<br>
+{% endfor %}
+<br>
+<input type="submit" value="Add">
+
+</form>
+
+
+<br>
+<br>
+<a href="/home">Home</a>
+
+<br>
+<br>
+<a href="/login">Logout</a>
+
+</body>
+
+
+</html>

@@ -1,0 +1,111 @@
+<html>
+<head>
+</head>
+<body>
+
+<style type="text/css">
+	table, th, td{
+		border: 1px solid black;
+	}
+</style>
+
+Item ID: {{item_num}}
+
+<table>
+	<th>Item Name</th>
+	<th>File_Path</th>
+	<th>Time</th>
+	<th>Email</th>
+	<th>Location</th>
+	<th>Status</th>
+
+{% for line in info %}
+	<tr>
+		<td>{{line.item_name}}</td>
+		<td>{{line.file_path}}</td>
+		<td>{{line.post_time}}</td>
+		<td>{{line.email_post}}</td>
+		<td>{{line.location}}</td>
+		{% if line.is_pub == 1 %}
+			<td>Public</td>
+		{% else %}
+			<td>Private</td>
+ 		{% endif %}
+	</tr>
+{% endfor %}
+</table>
+<br>
+
+<form action="/tag" method="POST">
+	<input type="text" name = "tag_email" placeholder="email" required/> </br>
+	<input type="submit" value = Tag />
+	<input type="hidden" name="itemID" value={{item_num}}>
+</form>
+
+<br>
+<table>
+	<th>Tagged</th>
+
+{% for line in tagged %}
+	<tr>
+	<td>{{line.fname}} {{line.lname}}</td>
+	</tr>
+{% endfor %}
+</table>
+<br>
+
+{{error}}
+<form action="/taggroup" method="POST">
+	<input type="text" name = "tag_group" placeholder="group" required\> </br>
+	<input type="submit" value = Tag />
+	<input type="hidden" name="itemID" value={{item_num}}>
+</form>
+
+<table>
+	<th>Name</th>
+	<th>Rating</th>
+
+{% for line in rate %}
+	<tr>
+	<td>{{line.fname}} {{line.lname}}</td>
+	<td>{{line.emoji}}</td>
+	</tr>
+{% endfor %}
+</table>
+<br>
+<form action="/comment" method="POST">
+	<textarea name="comment_text" rows="5" cols="50" placeholder="Enter Comment Here..." required/></textarea>
+	<br>
+	<input type="submit" value = Comment />
+	<input type="hidden" name="itemID" value={{item_num}}>
+<br>
+
+<table>
+	<th>Comment</th>
+	<th>Time</th>
+	<th>Email</th>
+	<th>ID</th>
+	
+{% for line in comment %}
+	<tr>
+	<td>{{line.comment_text}}</td>
+	<td>{{line.comment_time}}</td>
+	<td>{{line.email_post}}</td>
+	<td>{{line.c_id}}</td>
+	</tr>
+{% endfor %}
+
+</table>
+
+<br>
+<br>
+<a href="/home">Home</a>
+
+<br>
+<br>
+<a href="/login">Logout</a>
+
+</body>
+
+
+</html>
